@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>for문 반복문</title>
+  </head>
+  <body>
+    <!-- !for문 반복해서 여러번 하는 것 -->
+    <script>
+      // console.log("사탕 1개");
+      // console.log("사탕 1개");
+      // console.log("사탕 1개");
+      // console.log("사탕 1개");
+      // console.log("사탕 1개");
+      // console.log("사탕 1개");
+
+      // for 기본형
+      // for(시작; 조건; 증가){실행코드}
+
+      // for(let i = 10; i >= 1; i--){
+      //     console.log(`사탕 ${i} 개`);
+      // }
+
+      for (let i = 3; i <= 10; i++) {
+        console.log(`사탕 ${i} 개`);
+      }
+
+      // 1부터 5까지 더한 값
+      // let sum = 0
+      // for(let i = 1; i <=5; i++){
+      //     sum += i // sum = sum + i
+      // }
+      // console.log(sum);
+
+      // 1부터 10까지 더한 값
+      let sum = 0;
+      for (let i = 1; i <= 10; i++) {
+        sum += i; // sum = sum + i
+      }
+      console.log(sum);
+      for (let i = 1; i <= 9; i++) {
+        console.log(i);
+        document.write(`안녕하세요 ${i} 반가워요 <br>`);
+      }
+
+      // 1. 상품
+      // 2. 상품
+      // 3. 상품
+      // 4. 상품
+      for (let i = 1; i <= 4; i++) {
+        console.log(i);
+        document.write(`${i}. 상품 <br>`);
+      }
+
+      // 1~10 중에 짝수만 출력
+      for (let i = 1; i <= 10; i++) {
+        // console.log(i);
+        if (i % 2 === 0) {
+          // i를 2로 나눴을 때 나머지가 0
+          document.write(`${i} (짝수) <br>`);
+        }
+      }
+
+      // 1~10 중에 홀수만 출력
+      for (let i = 1; 1 <= 10; i++) {
+        if (i % 3 === 0) {
+          document.write(`${i}`);
+        }
+      }
+
+      // 별 찍기
+      for (let i = 1; i <= 5; i++) {
+        document.write(`${"⭐".repeat(i)}<br>`);
+      }
+    </script>
+  </body>
+</html>
