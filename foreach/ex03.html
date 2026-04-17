@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>forEach()</title>
+  </head>
+  <style>
+    h4{
+        color: blue;
+    }
+    p{
+        color: red;
+    }
+  </style>
+  <body>
+    <ul id="productList">
+      <!-- js출력 -->
+    </ul>
+
+    <script>
+      const proList = document.querySelector("#productList");
+      const products = [
+        { name: "티셔츠", price: 15000 , desc:"예쁜 티셔츠"},
+        { name: "청바지", price: 25000 , desc:"예쁜 청바지"},
+        { name: "운동화", price: 95000 , desc:"예쁜 운동화"},
+        { name: "티셔츠", price: 15000 , desc:"예쁜 티셔츠"},
+        { name: "청바지", price: 25000 , desc:"예쁜 청바지"},
+        { name: "운동화", price: 95000 , desc:"예쁜 운동화"},
+        { name: "티셔츠", price: 15000 , desc:"예쁜 티셔츠"},
+        { name: "청바지", price: 25000 , desc:"예쁜 청바지"},
+        { name: "운동화", price: 95000 , desc:"예쁜 운동화"},
+      ];
+      console.log(products);
+      products.forEach(function (item) {
+        console.log(item);
+        console.log(item.name);
+        console.log(item.price);
+
+        proList.innerHTML += `
+            <li>
+            <h3>${item.name}</h3>
+            <h4>설명: ${item.desc}</h4>
+            <p>${item.price.toLocaleString()}원</p>
+         </li>`;
+      });
+    </script>
+  </body>
+</html>
