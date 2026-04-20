@@ -1,20 +1,19 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>forEach()</title>
-</head>
-<body>
+  </head>
+  <body>
     <script>
-        const fruits = ["사과" , "바나나" , "포도" , "망고" , "딸기"]
-        console.log(fruits);
-        fruits.forEach(function(fruit , index){
-            console.log(fruit);
-            console.log(index);
-            
-            document.write(`${index + 1}. 과일: ${fruit}<br>`)
-        })
+      const fruits = ["사과", "바나나", "포도", "망고", "딸기"];
+      console.log(fruits);
+      fruits.forEach(function (fruit, index) {
+        console.log(fruit);
+        console.log(index);
+        document.write(`${index + 1}. 과일: ${fruit}<br>`);
+      });
     </script>
-</body>
+  </body>
 </html>
