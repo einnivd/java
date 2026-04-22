@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>keyup 이벤트</title>
+    <style>
+      .box {
+        width: 200px;
+        height: 200px;
+        background-color: rgb(173, 173, 173);
+      }
+      .box1.active {
+        background-color: rgb(219, 171, 219);
+      }
+      .box2.active {
+        background-color: rgb(235, 219, 77);
+      }
+      .box3.active {
+        background-color: rgb(124, 202, 135);
+      }
+      .box4.active {
+        background-color: rgb(123, 146, 221);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>keyup 이벤트</h1>
+    <!-- .box*4.box$ -->
+    <div class="box box1">box1</div>
+    <div class="box box2">box2</div>
+    <div class="box box3">box3</div>
+    <div class="box box4">box4</div>
+
+    <script>
+      document.addEventListener("keyup", function (event) {
+        // console.log(event);
+        let key = event.key.toLowerCase();
+        console.log(key);
+        // box 변수를 초기화하기 위해 null값을 할당한다.
+        let box = null;
+        console.log(box);
+
+        if (key === "enter") {
+          box = document.querySelector(".box1");
+        } else if (key === "shift") {
+          box = document.querySelector(".box2");
+        } else if (key === "h") {
+          box = document.querySelector(".box3");
+        } else if (key === "alt") {
+          box = document.querySelector(".box4");
+        }
+        if(box != null){
+            box.classList.add("active");
+        }
+        console.log(box);
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이벤트 color tap</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+         a{
+            text-decoration: none;
+            color: #333;
+        }
+        ul{
+            list-style: none;
+            width: 500px;
+            margin: 20px auto;
+            /* background-color: skyblue; */
+            padding: 10px 20px;
+            text-align: center;
+            display: flex;
+            gap: 10px;
+            justify-content: space-between;
+        }
+        ul li{
+            width: calc(100% / 3);
+            /* text-align: center; */
+        }
+        ul li a{
+            display: block;
+            padding: 10px 20px;
+            background-color: powderblue;
+        }
+       #result{
+        margin: auto;
+        width: 500px;
+        height: 300px;
+        background-color: #fff;
+        border: 2px solid#999;
+        border-radius: 10px;
+       }
+    </style>
+</head>
+<body>
+    <!-- ul>li*3>a[href="#"] -->
+    <ul>
+        <li><a href="#" onclick="changeBg('green')">Green</a></li>
+        <li><a href="#" onclick="changeBg('orange')">Orange</a></li>
+        <li><a href="#" onclick="changeBg('purple')">Purple</a></li>
+        <li><a href="#" onclick="changeBg('pink')">Pink</a></li>
+        <li><a href="#" onclick="changeBg('blue')">Blue</a></li>
+        <li><a href="#" onclick="changeBg('violet')">Violet</a></li>
+        <li><a href="#" onclick="changeBg('skyblue')">Skyblue</a></li>
+        <li><a href="#" onclick="changeBg('coral')">Coral</a></li>
+        <li><a href="#" onclick="changeBg('grey')">Grey</a></li>
+    </ul>
+    <div id="result">
+        <!-- js출력 -->
+    </div>
+    <script>
+        const result = document.querySelector("#result");
+        function changeBg(color){
+                // console.log(color);
+                result.style.backgroundColor = color
+            }
+    </script>
+</body>
+</html>
