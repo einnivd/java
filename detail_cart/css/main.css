@@ -1,0 +1,80 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+ul,
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  color: #333;
+}
+/* 전체 레이아웃 */
+.container {
+  max-width: 900px;
+  margin: auto;
+}
+.product {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+#cup {
+  width: 260px;
+  border-radius: 8px;
+}
+.small {
+  width: 72px;
+  cursor: pointer;
+  margin-right: 8px;
+  border: 2px solid transparent;
+}
+.small.selected {
+  border-color: tomato;
+}
+#decs {
+  flex: 1;
+}
+#cart {
+  margin-top: 16px;
+  padding: 10px;
+  border: 2px dashed #666;
+  border-radius: 8px;
+}
+#total {
+  font-weight: bold;
+  margin-top: 8px;
+}
+button {
+  background: tomato;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+#view{
+    display: block;
+    padding-top: 10px;
+    cursor: pointer;
+    text-decoration: underline;
+}
+#detail{
+    margin-top: 20px;
+    display: none;
+}
+#detail.show{
+    display: block;
+}
+#detail h2,
+#detail h3{
+    margin: 16px 0;
+}
+#detail ul{
+    padding-left: 20px;
+}
+#detail li{
+    list-style: disc;
+}
