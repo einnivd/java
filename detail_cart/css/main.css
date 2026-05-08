@@ -11,6 +11,18 @@ a {
   text-decoration: none;
   color: #333;
 }
+/* 장바구니 아이콘 */
+#cart-icon{
+  position: fixed;
+  top: 20px;
+  right: 50px;
+  background: tomato;
+  padding: 10px 16px;
+  border-radius: 50px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+}
 /* 전체 레이아웃 */
 .container {
   max-width: 900px;
@@ -20,6 +32,7 @@ a {
   display: flex;
   gap: 20px;
   align-items: flex-start;
+  margin-top: 30px;
 }
 #cup {
   width: 260px;
@@ -36,6 +49,13 @@ a {
 }
 #decs {
   flex: 1;
+}
+#desc li{
+  margin-bottom: 12px;
+}
+.bluetext{
+  color: royalblue;
+  font-weight: 500;
 }
 #cart {
   margin-top: 16px;

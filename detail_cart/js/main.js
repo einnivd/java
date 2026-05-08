@@ -19,6 +19,11 @@ window.addEventListener("load", () => {
   const detailProcess = document.getElementById("detail-process");
   const detailDescription = document.getElementById("detail-description");
   const flavorNote = document.getElementById("flavor-note");
+  // 장바구니 담기
+  const addBtn = document.getElementById("desc-btn");
+  const cartBox = document.getElementById("cart");
+  const totalBox = document.getElementById("total");
+  const cartCount = document.getElementById("cart-count");
   // 작은 이미지 클릭시 정보 변경 (클래스 selected 토글 포함)
   smallPic.forEach((small) => {
     // console.log(small);
@@ -31,8 +36,10 @@ window.addEventListener("load", () => {
   // changePic() : 큰 이미지 변경과 정보 변경
   function changePic(el) {
     // console.log(el); // el : 클릭하는 작은 이미지
+
     // 이미지 변경
     cup.src = el.src;
+
     // 내용 변경
     descName.textContent = `상품명 : ${el.dataset.name}`;
     descPrice.textContent = `판매가 : ${el.dataset.price}`;
@@ -48,11 +55,70 @@ window.addEventListener("load", () => {
     detailProcess.textContent = `가공법 : ${el.dataset.process}`;
     detailDescription.textContent = `${el.dataset.description}`;
     flavorNote.textContent = `${el.dataset.flavornote}`;
+    // 버튼 데이터 저장
+    addBtn.dataset.name = el.dataset.name;
+    const price = Number(el.dataset.price.replace(/[^0-9]/g, ""));
+    addBtn.dataset.price = price;
+    console.log(price);
   }
+
+  // 첫상품 기본 선택
+  smallPic[0].classList.add("selected");
+  changePic(smallPic[0]);
+
   // 상세 설명 보기 클릭시
-  viewBtn.addEventListener("click" , ()=>{
+  viewBtn.addEventListener("click", () => {
     // detail.classList.toggle("show")
     // 삼항연산자 (if{}else{} 대신 사용)
-    detail.style.display = detail.style.display === "block" ? "none" : "block"
-  })
+    detail.style.display = detail.style.display === "block" ? "none" : "block";
+  });
+  // 장바구니 기능
+  // 장바구니 데이터
+  let cartItems = {};
+  // 장바구니 담기
+  addBtn.addEventListener("click", () => {
+    const name = addBtn.dataset.name;
+    console.log(name);
+    const price = Number(addBtn.dataset.price);
+    // console.log(price);
+    // 장바구니 숫자 증가
+    if (!cartItems[name]) {
+      cartItems[name] = {
+        price: price,
+        quantity: 1,
+      };
+    } else {
+      cartItems[name].quantity++;
+    }
+    // 화면 업데이트
+    updateCart();
+  });
+  // console.log(cartItems);
+
+  // 장바구니 박스 업데이트 기능
+  function updateCart() {
+    cartBox.innerHTML = `<strong>🛒장바구니</strong>`;
+    let totalPrice = 0;
+    let totalCount = 0;
+    for (let key in cartItems) {
+      const item = cartItems[key];
+      totalPrice += item.price * item.quantity;
+      totalCount += item.quantity;
+      const p = document.createElement("p");
+      // console.log(p);
+      p.textContent = `
+    ${key} - ${item.price}원 × ${item.quantity}
+    `;
+      console.log(p);
+      cartBox.appendChild(p);
+    }
+    // 총합
+    totalBox.textContent = `
+    총 합계 : ${totalPrice.toLocaleString()}원`;
+    // 장바구니 숫자
+    cartCount.textContent = totalCount;
+    console.log(totalPrice);
+    console.log(totalCount);
+  }
+  console.log(cartItems);
 });
