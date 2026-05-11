@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dom Event 객체</title>
+  </head>
+  <body>
+    <div id="container">
+      <img src="images/cup-1.png" alt="cup" id="cup" />
+      <p class="display">
+        <!-- js출력 -->
+      </p>
+    </div>
+    <script>
+      const cup = document.querySelector("#cup");
+      cup.addEventListener("click", (event) => {
+        console.log(event);
+        // console.log(event.type);
+        display.innerHTML = `
+            이벤트 유형 : ${e.type} <br>
+            이벤트 발생위치(x) : ${event.x}px<br>
+            이벤트 발생위치(y) : ${evnet.y}px<br>
+            이벤트 발생 이미지 주소 : ${e.target.src}<br>
+            `;
+            // 실제로 이벤트가 발생한 요소 - 누가 클릭했는지를 알려주는 기능
+      });
+      console.log(e.target);
+    </script>
+  </body>
+</html>
