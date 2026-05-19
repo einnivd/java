@@ -1,0 +1,68 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+a{
+    color: #333;
+    text-decoration: none;
+}
+ul,li{
+    list-style: none;
+}
+header{
+    position: relative;
+    padding: 20px;
+    background-color: antiquewhite;
+    z-index: 999;
+}
+.menu{
+    position: relative;
+    top: 20px;
+    width: 500px;
+    margin: auto;
+    display: flex;
+    text-align: center;
+}
+.menu>li{
+    /* menu 바로 아래에 있는 li만 */
+    position: relative;
+    width: calc(100% / 3);
+}
+.menu>li>a{
+    display: block;
+    padding: 15px 0;
+    background-color: rgb(148, 225, 255);
+}
+.menu>li:hover>a{
+    background-color: rgb(129, 195, 221);
+}
+.submenu{
+    display: none;
+    position: absolute;
+    top: 50px;
+    left: 0;
+    width: 100%;
+    background-color: rgb(0, 143, 199);
+}
+.submenu.active{
+    display: block;
+}
+.submenu li a{
+    display: block;
+    padding: 20px 0;
+    color: #fff;
+}
+.submenu li:hover>a{
+    background-color: rgb(0, 113, 158);
+}
+.header-bg{
+    display: none;
+    width: 100%;
+    height: 300px;
+    position: absolute;
+    top: 92px;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+}
