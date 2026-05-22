@@ -27,7 +27,7 @@ $(function () {
   // 2. 위로 슬라이드 기능
   const slideListUp = $(".slide-list-up");
   const slideHeight = $(".slide-list-up li").height();
-  console.log(slideHeight);
+  console.log(slideHeight);이미
   const moveUp = () => {
     slideListUp.animate({ marginTop: -slideHeight }, 1000, function () {
       $(this).append($(this).find("li:first"));
