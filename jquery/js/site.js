@@ -100,6 +100,39 @@ $(function () {
   // 좋아요 버튼 클릭 이벤트
   $(".like-btn").click(function () {
     console.log(this);
-    $(this).toggleClass("active")
+    $(this).toggleClass("active");
+  });
+  // 검색창 입력 이벤트 필터링
+  // keyup = 키보드를 눌렀다가 뗄 때 실행
+  // on은 addEventListener와 같은 기능
+  $(".search-input").on("keyup", function () {
+    // 입력한 값을 가져옴
+    // val() 입력한 값을 가져오는 메서드
+    const inputValue = $(this).val().toLowerCase();
+    // console.log(inputValue);
+    // filter()
+    const filter = products.filter((item) =>
+      item.name.toLowerCase().includes(inputValue),
+    );
+    // console.log(filter);
+    renderProducts(filter);
+  });
+  // 탭 버튼 클릭 이벤트
+  $(".tab-btn").on("click", function () {
+    // 모튼 탭 버튼 active 제거
+    $(".tab-btn").removeClass("active");
+    // 클릭한 버튼만 active 추가
+    $(this).addClass("active");
+    // 클릭한 버튼의 data-category 값 가져오기
+    const btnCategory = $(this).data("category");
+    // console.log(category);
+    if (btnCategory === "all") {
+      renderProducts(products);
+    } else {
+      // 선택한 카테고리만 필터링
+      const filter = products.filter((item) => item.category === btnCategory);
+      // 필터링된 상품만 출력
+      renderProducts(filter);
+    }
   });
 });
