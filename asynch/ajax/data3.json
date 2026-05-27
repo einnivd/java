@@ -1,0 +1,17 @@
+[
+  {
+    "title": "햄버거",
+    "img": "images/hamburger.jpg",
+    "alt": "햄버거"
+  },
+  {
+    "title": "피자",
+    "img": "images/pizza.jpg",
+    "alt": "피자"
+  },
+  {
+    "title": "치킨",
+    "img": "images/chicken.jpg",
+    "alt": "치킨"
+  }
+]
