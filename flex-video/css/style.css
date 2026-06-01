@@ -88,12 +88,15 @@ main section article {
   position: relative;
   flex: 1;
   padding: 70px 40px 100px;
+  width: 100%;
+  height: 100%;
   cursor: pointer;
   /* 호버되지 않을 때 1로 설정 */
   z-index: 1;
   background-color: lavender;
+  flex-wrap: wrap;
   overflow: hidden;
-  opacity: 0.8;
+  /* opacity: 0.8; */
   transition:
     flex 0.5s,
     opacity 0.5s;
@@ -121,6 +124,7 @@ main section article:hover::before {
   left: 0;
   opacity: 1;
   visibility: visible;
+  /* background-color: yellowgreen; */
 }
 main section article .inner {
   position: relative;
@@ -131,6 +135,10 @@ main section article .inner {
   align-content: space-between;
 }
 main section article .inner .txt {
+  width: 100%;
+  transition: 0.5s;
+}
+main section article:hover .inner .txt {
   width: 75%;
 }
 .txt h2 {
@@ -138,7 +146,7 @@ main section article .inner .txt {
   font-size: 2vw;
   line-height: 1;
   font-family: "Alegreya Sans SC";
-  color: #fff;
+  color: #333;
   margin-bottom: 40px;
   padding-top: 70px;
   transition: 1s;
@@ -148,7 +156,7 @@ main section article .inner .txt {
   display: block;
   width: 40px;
   height: 2px;
-  background-color: #777;
+  background-color: #222;
   margin-top: 20px;
   transition: 1.5s;
 }
@@ -167,21 +175,21 @@ article:hover .txt h2::after {
   width: 120px;
   background-color: rgb(255, 230, 1);
 }
-article:hover .txt p{
-    color: #333;
+article:hover .txt p {
+  color: #333;
 }
-article .inner figure{
-    position: relative;
-    width: 100%;
-    height: 15vh;
-    background-color: #777;
-    /* 왼쪽 방향 기준으로 변형이 일어나도록 중심축 변경 */
-    transform-origin: left center;
-    box-shadow: 5px 5px 30px rgba(0,0,0,0.3);
-    overflow: hidden;
-    /* 영상 박스의 채도 낮추기 */
-    filter: saturate(70%);
-    transition: 1s;
+article .inner figure {
+  position: relative;
+  width: 100%;
+  height: 15vh;
+  background-color: #777;
+  /* 왼쪽 방향 기준으로 변형이 일어나도록 중심축 변경 */
+  transform-origin: left center;
+  box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  /* 영상 박스의 채도 낮추기 */
+  filter: saturate(70%);
+  transition: 1s;
 }
 article .inner figure video {
   width: 100%;
@@ -189,9 +197,171 @@ article .inner figure video {
   object-fit: cover;
   transform: scale(1.1);
 }
-article:hover .inner figure{
-    height: 25vh;
+article:hover .inner figure {
+  height: 25vh;
+  filter: saturate(120%);
 }
 main aside {
-  display: none;
+  position: absolute;
+  top: 0;
+  /* left: 0; */
+  left: -100%;
+  width: 100%;
+  height: 100vh;
+  background-color: #222;
+  z-index: 999;
+  padding: 20vh 7vw 14vh 20vw;
+  display: flex;
+  /* opacity: 1; */
+  opacity: 0;
+  justify-content: space-between;
+  transition: 1s;
+}
+main aside.on {
+  opacity: 1;
+  left: 0;
+}
+main aside .txt {
+  width: 25%;
+  height: 100%;
+}
+main aside .txt h1 {
+  font-weight: normal;
+  font-size: 6vw;
+  line-height: 1;
+  font-family: "Alegreya Sans SC";
+  color: #ddd;
+  margin-bottom: 20px;
+}
+main aside .txt p {
+  font-size: 1.1vw;
+  line-height: 1.3;
+  font-family: "arial";
+  color: #666;
+  margin-bottom: 60px;
+}
+main aside .txt span {
+  cursor: pointer;
+  color: orange;
+}
+main aside figure {
+  width: 72%;
+  height: 100%;
+}
+main aside figure video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* 반응형 */
+@media (max-width: 1000px) {
+  main section {
+    flex-direction: column;
+  }
+  main section article {
+    padding-top: 20px;
+    overflow: visible;
+  }
+  main section article .txt h2{
+    font-size: 24px;
+  }
+  main section article .txt p {
+    padding-bottom: 10px;
+  }
+  main section article:hover .txt h2 {
+    font-size: 36px;
+  }
+   main aside .txt p {
+    font-size: 14px;
+  }
+}
+@media (max-width: 768px) {
+  main {
+    flex-direction: column;
+  }
+  main header {
+    width: 100%;
+    justify-content: flex-start;
+    padding: 20px;
+  }
+  main header h1 {
+    align-items: center;
+    margin-right: 20px;
+  }
+  main header h1 i {
+    font-size: 48px;
+  }
+  main header h1 span {
+    font-size: 18px;
+  }
+  main nav {
+    top: 4vh;
+  }
+  address {
+    padding-top: 20px;
+  }
+  main section {
+    width: 100%;
+    padding-top: 0;
+  }
+  main section article {
+    padding: 0 20px;
+  }
+  main section article .txt h2{
+    font-size: 24px;
+  }
+  main section article .txt p {
+    padding-bottom: 10px;
+  }
+  main section article:hover {
+    padding-top: 20px;
+  }
+  main section article:hover .txt h2 {
+    font-size: 36px;
+  }
+  main section article::before {
+    height: 100%;
+  }
+   main aside .txt p {
+    font-size: 14px;
+  }
+}
+@media (max-width: 390px) {
+  address {
+    padding-top: 52px;
+  }
+  main section {
+    padding-top: 0px;
+  }
+  main section article:hover {
+    padding-top: 20px;
+  }
+  main section article:hover .txt h2 {
+    font-size: 36px;
+  }
+  main section article::before {
+    height: 100%;
+  }
+  .txt h2 {
+    padding-top: 30px;
+    font-size: 24px;
+  }
+  main aside {
+    flex-direction: column;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  main aside .txt {
+    width: 100%;
+    height: auto;
+  }
+  main aside .txt h1 {
+    font-size: 36px;
+  }
+  main aside .txt p {
+    font-size: 14px;
+  }
+  main aside figure {
+    width: 100%;
+  }
 }
