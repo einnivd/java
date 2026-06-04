@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+
+      ul,
+      li {
+        list-style: none;
+      }
+      a {
+        text-decoration: none;
+        color: #333;
+      }
+      img {
+        display: block;
+        width: 100%;
+      }
+      .menu {
+        width: 70%;
+        margin: 100px auto;
+        display: flex;
+        background-color: thistle;
+      }
+      .menu-item {
+        flex: 1;
+        text-align: center;
+        padding: 10px;
+        background-color: #f0f0f0;
+      }
+      .menu-item:hover,
+      .menu-item.active {
+        background-color: #333;
+        color: #fff;
+        cursor: pointer;
+      }
+      .card-container{
+        width: 80%;
+        margin: auto;
+      }
+      .card{
+        display: flex;
+        gap: 10px;
+        padding: 20px;
+        border: 1px solid #ccc;
+      }
+      .card li{
+        flex: 1;
+        text-align: center;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="menu">
+      <!-- .menu-item*3{메뉴 $} -->
+      <div class="menu-item">메뉴 1</div>
+      <div class="menu-item">메뉴 2</div>
+      <div class="menu-item">메뉴 3</div>
+    </div>
+    <div class="card-container">
+      <!-- js출력 -->
+    </div>
+    <script>
+      const cardContainer = document.querySelector(".card-container");
+      // json정보 가져오기
+      fetch("cardData.json")
+        .then((response) => {
+          return response.json();
+        })
+        .then((cardData) => {
+          //   console.log(cardData);
+          cardData.forEach((menu, index) => {
+            // console.log(menu, index);
+            const cardList = document.createElement("ul");
+            // console.log(cardList);
+            cardList.classList.add("card");
+            menu.forEach((card) => {
+              const cardItem = document.createElement("li");
+              console.log(cardItem);
+              cardItem.innerHTML = `
+                <img src="${card.imageSrc}" alt="${card.description}">
+                <h2>설명: ${card.description}</h2>
+                <p>가격: ${card.price}</p>
+                `;
+              cardList.appendChild(cardItem);
+            });
+            cardContainer.appendChild(cardList);
+          });
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      const menuItem = document.querySelectorAll(".menu-item");
+      menuItem.forEach((menuI, index) => {
+        // console.log(menuItem, index);
+        menuI.addEventListener("click", () => {
+          showCard(index);
+        });
+      });
+      //   보여지는 함수
+      function showCard(index) {
+        // console.log(index);
+      }
+    </script>
+  </body>
+</html>
