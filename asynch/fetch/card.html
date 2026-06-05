@@ -41,21 +41,24 @@
         color: #fff;
         cursor: pointer;
       }
-      .card-container{
+      .card-container {
         width: 80%;
         margin: auto;
       }
-      .card{
-        display: flex;
+      .card {
+        /* display: flex; */
+        display: none;
         gap: 10px;
         padding: 20px;
         border: 1px solid #ccc;
       }
-      .card li{
+      .card.active {
+        display: flex;
+      }
+      .card li {
         flex: 1;
         text-align: center;
       }
-
     </style>
   </head>
   <body>
@@ -94,21 +97,34 @@
             });
             cardContainer.appendChild(cardList);
           });
+          // 탭 버튼 클릭시
+          const menuItem = document.querySelectorAll(".menu-item");
+          menuItem.forEach((menuI, index) => {
+            // console.log(menuItem, index);
+            menuI.addEventListener("click", () => {
+              showCard(index);
+            });
+            //   보여지는 함수
+            function showCard(index) {
+              // console.log(index);
+              const cards = document.querySelectorAll(".card");
+              console.log(cards);
+              const menuItems = document.querySelectorAll(".menu-item");
+              cards.forEach((card, i) => {
+                console.log(card);
+                card.classList.toggle("active", i === index);
+              });
+              menuItems.forEach((menuItem, i) => {
+                menuItem.classList.toggle("active", i === index);
+              });
+            }
+            // 첫화면 보여주기
+            showCard(0);
+          });
         })
         .catch((error) => {
           console.log(error);
         });
-      const menuItem = document.querySelectorAll(".menu-item");
-      menuItem.forEach((menuI, index) => {
-        // console.log(menuItem, index);
-        menuI.addEventListener("click", () => {
-          showCard(index);
-        });
-      });
-      //   보여지는 함수
-      function showCard(index) {
-        // console.log(index);
-      }
     </script>
   </body>
 </html>
