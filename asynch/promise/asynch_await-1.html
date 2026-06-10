@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>await-상품 리스트</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        ul,li{
+            list-style: none;
+        }
+        img{
+            width: 100%;
+            display: block;
+        }
+        #list{
+            max-width: 1200px;
+            margin: auto;
+            display: grid;
+            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        }
+        #list li{
+            padding: 20px;
+            border: 1px solid #ccc;
+        }
+        #list li img{
+            height: 250px;
+            object-fit: contain;
+        }
+        h3{
+            margin-top: 20px;
+        }
+    </style>
+  </head>
+  <body>
+    <h1>상품리스트</h1>
+    <ul id="list">
+      <!-- js출력 -->
+    </ul>
+
+    <script>
+      // asynch = 이 함수 안에서 기다릴 수 있어
+      // await = 결과 나올 때까지 기다려
+      // try와 catch는 성공하면 try, 실패하면 catch 실행
+      // finally는 무조건 마지막에 실행
+      async function getProducts() {
+        try {
+          const res = await fetch("https://fakestoreapi.com/products?limit=10");
+          const data = await res.json();
+          //   console.log(data);
+          const ulE = document.querySelector("#list");
+          data.forEach((myItem) => {
+            // console.log(myItem);
+            // const liE = document.createElement("liE")
+            ulE.innerHTML += `
+            <li>
+             <img src="${myItem.image}" alt="${myItem.category}">
+             <h3>${myItem.title}</h3>
+             <p>카테고리 : ${myItem.category}</p>
+             <p>가격 : $${myItem.price}</p>
+             <p>평점 : ${myItem.rating.rate} / 리뷰 : ${myItem.rating.count}개</p>
+             <p>설명 : ${myItem.description}</p>
+             
+           </li>
+            `;
+          });
+        } catch (e) {
+          console.log("에러:", e);
+        } finally {
+          console.log("데이터 불러오기 완료!");
+        }
+      }
+      getProducts();
+    </script>
+  </body>
+</html>
