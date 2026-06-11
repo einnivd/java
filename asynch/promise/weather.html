@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>날씨</title>
+  </head>
+  <body>
+    <div class="weather">
+        <!-- js출력 -->
+        
+    </div>
+    <script>
+      async function getWeather() {
+        const apiKey = "94cd8a7bb234bdea24e1e4a1a4eb6a8c";
+        const city = "Daegu";
+        try {
+          const res = await fetch(
+            `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric&lang=kr`,
+          );
+          const data = await res.json();
+          console.log(data);
+          const weatherBox = document.querySelector(".weather")
+          weatherBox.innerHTML = `
+           <h2>도시 : ${data.name}</h2>
+         <img src="https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png" alt="">
+         <p>날씨 : ${data.weather[0].description}</p>
+         <p>기온 : ${data.main.temp}°C</p>
+         <p>체감온도 : ${data.main.feels_like}°C</p>
+         <p>습도 : ${data.main.humidity}%</p>
+         <p>풍속 : ${data.wind.speed}m/s</p>
+          `
+        } catch (e) {
+          console.log(e);
+        }
+      }
+      getWeather();
+    </script>
+  </body>
+</html>
